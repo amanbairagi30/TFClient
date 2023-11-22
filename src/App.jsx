@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Home from "./pages/Home"
 import Header from "./components/Header"
+import { TeamProvider } from "./context/TeamContext";
 
 function App() {
 
@@ -14,14 +15,16 @@ function App() {
 
   return (
     <>
-      <div className='max-w-[1290px] mx-auto h-fit my-[2rem] px-4'>
-        <Header
-          openForm={openForm}
-          setOpenForm={setOpenForm}
-          selectedUserData={selectedUserData}
-        />
-        <Home handleEdit={handleEdit} />
-      </div>
+      <TeamProvider>
+        <div className='max-w-[1290px] mx-auto h-fit my-[2rem] px-4'>
+          <Header
+            openForm={openForm}
+            setOpenForm={setOpenForm}
+            selectedUserData={selectedUserData}
+          />
+          <Home handleEdit={handleEdit} />
+        </div>
+      </TeamProvider>
     </>
   )
 }
